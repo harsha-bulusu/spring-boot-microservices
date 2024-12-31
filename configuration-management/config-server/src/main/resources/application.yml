@@ -1,0 +1,34 @@
+server:
+  port: 8071
+spring:
+  profiles:
+#    active: native
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/harsha-bulusu/configurations-demo.git
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+#        native:
+#          search-locations: "classpath:/config" #if stored in classpath
+#          search-locations: "file:///"  ### If stored in filepath
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+#encrypt:
+#  key: "4DDWDBKBIU23323"
+
+# It is ideal to pass encryption key as a Command line argument or ENV variable
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

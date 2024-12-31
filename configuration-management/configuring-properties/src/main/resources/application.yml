@@ -1,0 +1,27 @@
+#db.username=root
+#db.password=123
+#db.url=jdbc://mysql@localhost:3600/workspace
+
+spring:
+  application:
+    name: app01
+  cloud:
+    config:
+      name: app01
+  config:
+    import: optional:configserver:http://localhost:8071/
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+#  profiles:
+#    active: dev
+
+# if no profile is set it hits the config server with default profile /{app-name}/{default}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
